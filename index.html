@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Just For You</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background: radial-gradient(circle at top, #0b132b, #000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#e5e7eb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container{
+  text-align:center;
+  max-width:560px;
+  padding:20px;
+  display:none;
+}
+
+h1{
+  font-size:26px;
+  margin-bottom:20px;
+  opacity:0.9;
+}
+
+#type{
+  font-size:18px;
+  line-height:2;
+  white-space:pre-line;
+  border-right:2px solid #9ca3af;
+  padding-right:6px;
+}
+
+.end{
+  margin-top:35px;
+  opacity:0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay:14s;
+}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+/* START SCREEN */
+.start{
+  text-align:center;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+}
+.start p{
+  font-size:18px;
+  opacity:0.9;
+}
+@keyframes pulse{
+  0%{opacity:0.4;}
+  50%{opacity:1;}
+  100%{opacity:0.4;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Start Screen -->
+<div class="start" ondblclick="startMessage()">
+  <p>Double tap to read this special message 🤍</p>
+</div>
+
+<!-- Main Content -->
+<div class="container" id="content">
+  <h1>dear subhan this special msg is only for youhh🖤</h1>
+  <div id="type"></div>
+
+  <div class="end">
+    <p><strong>9 February</strong> 📅</p>
+    <p><em>from your love once</em> 🤍</p>
+  </div>
+</div>
+
+<script>
+const text =
+`Aslam o Alaikum 🌙
+Umeed hai aap mere baghair bhi theek hi hon ge 🥴😏😅
+Khair… aage barhte hain 🤍
+
+February 2025 se shuru hone wali kahani,
+aap aur aapki yaadon ke saath…
+pata hi nahi chala ke
+yeh saal kab guzar gaya
+aur 2026 aa gaya ⏳✨
+
+Aur phir…
+meri jaan ka birthday aa gaya 🫣🫠🤭
+Jis din mera khaas, special
+mere liye is duniya mein aaya 🌍🖤
+Shyd zyada ho gya😬😅
+Aaach kher
+Baqi baatein phir sahi…
+is se pehle ke koi aur
+aap ko wish kar de 😌
+main hi jaldi jaldi kar leti hoon 😄💫
+
+HAPPY BIRTHDAY
+TO THE KING OF MY HEART 👑🖤
+
+The man I prayed for 🤲
+and the person I’m truly grateful for ✨
+
+Aaj ke din meri dua hai ke
+Allah aapko
+khushiyan 😊، sehat 🌿، sakoon 🤍
+aur har qadam par kamyabi ata kare 🌟
+Ameen.
+
+Aap waqai is sab ke haqdar ho 🖤
+
+پیار سے بھری زندگی ملے آپکو ۔۔۔🥹 خوشیوں سے بھرے پل ملے آپکو۔۔۔🪔
+ کبھی کسی غم کا سامنانہ کرنا پڑے۔۔۔🥴 ایسا آنے والا کل ملے آپکو۔۔۔😙
+سالگرہ مبارک جان تمنا💋🫶🏻👀❤️
+
+A very Happy Birthday, meri jaan and I LOVE YOU SOOOOOOOO MUCHHHHH(umaaaaaaaaah💋)🤍
+
+Allah Pak aapko or mujy hmesha sath khush rkhy 🤲
+Ameen sum ameeen ❤️‍🩹 
+
+فی امان الله 🌙`;
+
+let i = 0;
+function typing(){
+  if(i < text.length){
+    document.getElementById("type").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 55);
+  }
+}
+
+function startMessage(){
+  document.querySelector(".start").style.display="none";
+  document.getElementById("content").style.display="block";
+  typing();
+}
+</script>
+
+</body>
+</html>
