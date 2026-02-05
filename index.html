@@ -2,91 +2,77 @@
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Just For You</title>
 
 <style>
-body{
-  margin:0;
-  height:100vh;
-  background: radial-gradient(circle at top, #0b132b, #000);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#e5e7eb;
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e5e7eb;
   font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
-.container{
-  text-align:center;
-  max-width:560px;
-  padding:20px;
-  display:none;
+.container {
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
 }
 
-h1{
-  font-size:26px;
-  margin-bottom:20px;
-  opacity:0.9;
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
-#type{
-  font-size:18px;
-  line-height:2;
-  white-space:pre-line;
-  border-right:2px solid #9ca3af;
-  padding-right:6px;
+#type {
+  font-size: 18px;
+  line-height: 1.8;
+  white-space: pre-line;
+  color: #d1d5db;
 }
 
-.end{
-  margin-top:35px;
-  opacity:0;
+.end {
+  margin-top: 35px;
+  opacity: 0;
   animation: fadeIn 2s ease forwards;
-  animation-delay:14s;
 }
 
-@keyframes fadeIn{
-  to{opacity:1;}
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
-/* START SCREEN */
-.start{
-  text-align:center;
-  cursor:pointer;
-  animation:pulse 2s infinite;
+/* Cursor blink effect */
+#type::after {
+  content: "|";
+  animation: blink 0.7s infinite;
 }
-.start p{
-  font-size:18px;
-  opacity:0.9;
-}
-@keyframes pulse{
-  0%{opacity:0.4;}
-  50%{opacity:1;}
-  100%{opacity:0.4;}
+@keyframes blink {
+  50% { opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Start Screen -->
-<div class="start" ondblclick="startMessage()">
-  <p>Double tap to read this special message 🤍</p>
-</div>
-
-<!-- Main Content -->
-<div class="container" id="content">
+<div class="container">
   <h1>dear subhan this special msg is only for youhh🖤</h1>
   <div id="type"></div>
 
-  <div class="end">
+  <div id="final" class="end" style="display:none;">
     <p><strong>9 February</strong> 📅</p>
-    <p><em>from your love once</em> 🤍</p>
+    <p><em>from your loved one</em> 🤍</p>
   </div>
 </div>
 
 <script>
-const text =
-`Aslam o Alaikum 🌙
+const text = `Aslam o Alaikum 🌙
 Umeed hai aap mere baghair bhi theek hi hon ge 🥴😏😅
 Khair… aage barhte hain 🤍
 
@@ -100,8 +86,7 @@ Aur phir…
 meri jaan ka birthday aa gaya 🫣🫠🤭
 Jis din mera khaas, special
 mere liye is duniya mein aaya 🌍🖤
-Shyd zyada ho gya😬😅
-Aaach kher
+
 Baqi baatein phir sahi…
 is se pehle ke koi aur
 aap ko wish kar de 😌
@@ -133,19 +118,20 @@ Ameen sum ameeen ❤️‍🩹
 فی امان الله 🌙`;
 
 let i = 0;
-function typing(){
-  if(i < text.length){
+function typing() {
+  if (i < text.length) {
     document.getElementById("type").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typing, 55);
+    // Auto-scroll for mobile
+    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(typing, 50);
+  } else {
+    document.getElementById("final").style.display = "block";
   }
 }
 
-function startMessage(){
-  document.querySelector(".start").style.display="none";
-  document.getElementById("content").style.display="block";
-  typing();
-}
+// Start typing as soon as page loads
+window.onload = typing;
 </script>
 
 </body>
